@@ -21,6 +21,9 @@ namespace lowi
 		instruction_type(instruction_type&& instruction_type) noexcept = delete;
 		virtual ~instruction_type() = default;
 
+	protected:
+		instruction_type(const std::string& name, std::uint64_t number_of_operands);
+
 	public:
 		instruction_type& operator=(const instruction_type& instruction_type) = delete;
 		instruction_type& operator=(instruction_type&& instruction_type) noexcept = delete;
@@ -33,6 +36,10 @@ namespace lowi
 		virtual bool equal(const instruction_type& instruction_type) const = 0;
 		bool equal(const ptr& instruction_type) const;
 	
+	public:
+		std::string name() const;
+		std::uint64_t number_of_operands() const noexcept;
+
 	private:
 		std::string name_;
 		std::uint64_t number_of_operands_;

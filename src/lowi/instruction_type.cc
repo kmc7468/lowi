@@ -25,6 +25,15 @@ namespace lowi
 	{
 		return equal(*instruction_type);
 	}
+
+	std::string instruction_type::name() const
+	{
+		return name_;
+	}
+	std::uint64_t instruction_type::number_of_operands() const noexcept
+	{
+		return number_of_operands_;
+	}
 }
 
 namespace lowi
@@ -34,6 +43,10 @@ namespace lowi
 	{}
 	instruction_type_set::instruction_type_set(instruction_type_set&& instruction_type) noexcept
 		: name_(std::move(instruction_type.name_)), instruction_types_(std::move(instruction_type.instruction_types_))
+	{}
+
+	instruction_type::instruction_type(const std::string& name, std::uint64_t number_of_operands)
+		: name_(name), number_of_operands_(number_of_operands)
 	{}
 
 	instruction_type_set& instruction_type_set::operator=(const instruction_type_set& instruction_type)
