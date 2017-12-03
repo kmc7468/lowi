@@ -14,6 +14,10 @@ namespace lowi
 		: word_(std::move(token.word_)), line_(std::move(token.line_)), col_(std::move(token.col_)), end_col_(std::move(token.end_col_))
 	{}
 
+	token::token()
+		: word_(), line_(0), col_(0), end_col_(0)
+	{}
+
 	token& token::operator=(const token& token)
 	{
 		return assign(token);
@@ -85,4 +89,6 @@ namespace lowi
 	{
 		return end_col_ = new_end_col;
 	}
+
+	const token token::empty;
 }

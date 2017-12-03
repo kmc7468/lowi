@@ -14,6 +14,9 @@ namespace lowi
 		token(token&& token) noexcept;
 		~token() = default;
 
+	private:
+		token();
+
 	public:
 		token& operator=(const token& token);
 		token& operator=(token&& token) noexcept;
