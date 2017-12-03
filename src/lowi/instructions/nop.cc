@@ -17,11 +17,11 @@ namespace lowi
 			return !equal(nop);
 		}
 
-		nop& nop::assign(const nop& nop)
+		nop& nop::assign(const nop&)
 		{
 			return *this;
 		}
-		nop& nop::assign(nop&& nop) noexcept
+		nop& nop::assign(nop&&) noexcept
 		{
 			return *this;
 		}
@@ -32,7 +32,7 @@ namespace lowi
 			
 			return name() == instruction_type.name() && number_of_operands() == instruction_type.number_of_operands();
 		}
-		bool nop::equal(const nop& nop) const noexcept
+		bool nop::equal(const nop&) const noexcept
 		{
 			return true;
 		}
