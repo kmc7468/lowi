@@ -6,10 +6,12 @@
 #include <lowi/instruction.hh>
 #include <lowi/instruction_type.hh>
 #include <lowi/operand.hh>
-#include <lowi/register.hh>
+#include <lowi/register_type.hh>
 #include <lowi/token.hh>
 
 #include <lowi/instructions/mov.hh>
 #include <lowi/instructions/nop.hh>
+
+#include <lowi/registers/rax.hh>
 
 #endif
