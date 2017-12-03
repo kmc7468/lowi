@@ -43,6 +43,10 @@ namespace lowi
 	private:
 		std::string name_;
 		std::uint64_t number_of_operands_;
+
+	public:
+		static const ptr nop;
+		static const ptr mov;
 	};
 
 	class instruction_type_set final
@@ -51,7 +55,11 @@ namespace lowi
 		using ptr = std::shared_ptr<instruction_type_set>;
 
 	public:
-		instruction_type_set() = default;
+		instruction_type_set(const std::string& name);
+		instruction_type_set(const std::string& name, bool lock);
+		instruction_type_set(const std::string& name, const std::vector<instruction_type::ptr>& instruction_types);
+		instruction_type_set(const std::string& name, const std::vector<instruction_type::ptr>& instruction_types,
+			bool lock);
 		instruction_type_set(const instruction_type_set& instruction_type);
 		instruction_type_set(instruction_type_set&& instruction_type) noexcept;
 		~instruction_type_set() = default;
@@ -73,10 +81,16 @@ namespace lowi
 	public:
 		std::string name() const;
 		std::string name(const std::string& new_name);
+		bool locked() const noexcept;
+		bool locked(bool lock) noexcept;
 
 	private:
 		std::string name_;
 		std::vector<instruction_type::ptr> instruction_types_;
+		bool locked_ = false;
+
+	public:
+		static const ptr default;
 	};
 }
 
