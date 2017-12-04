@@ -69,6 +69,17 @@ namespace lowi
 		size_ = std::move(map_item.size_);
 		return *this;
 	}
+	bool register_map_item_basic::equal(const register_map_item& map_item) const
+	{
+		if (dynamic_cast<const register_map_item_basic*>(&map_item) == nullptr)
+		{
+			return false;
+		}
+		else
+		{
+			return equal(dynamic_cast<const register_map_item_basic&>(map_item));
+		}
+	}
 	bool register_map_item_basic::equal(const register_map_item_basic& map_item) const noexcept
 	{
 		return size_ == map_item.size_;
@@ -77,10 +88,6 @@ namespace lowi
 	std::size_t register_map_item_basic::size() const noexcept
 	{
 		return size_;
-	}
-	std::size_t register_map_item_basic::size(std::size_t new_size) noexcept
-	{
-		return size_ = new_size;
 	}
 }
 

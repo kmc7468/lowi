@@ -60,11 +60,11 @@ namespace lowi
 	public:
 		register_map_item_basic& assign(const register_map_item_basic& map_item) noexcept;
 		register_map_item_basic& assign(register_map_item_basic&& map_item) noexcept;
+		virtual bool equal(const register_map_item& map_item) const override;
 		bool equal(const register_map_item_basic& map_item) const noexcept;
 
 	public:
-		std::size_t size() const noexcept;
-		std::size_t size(std::size_t new_size) noexcept;
+		virtual std::size_t size() const noexcept override;
 
 	private:
 		std::size_t size_;
