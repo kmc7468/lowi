@@ -1,13 +1,14 @@
 #ifndef LOWI_HEADER_REGISTER_MAP_HH
 #define LOWI_HEADER_REGISTER_MAP_HH
 
-#include <lowi/register_type.hh>
-
+#include <cstddef>
 #include <memory>
 #include <vector>
 
 namespace lowi
 {
+	class register_type;
+
 	class register_map_item_basic;
 	class register_map_item_register;
 
@@ -39,14 +40,14 @@ namespace lowi
 		bool equal(const ptr& map_item) const;
 
 	public:
-		virtual std::size_t size() const = 0;
+		virtual std::uint32_t size() const = 0;
 	};
 
 	class register_map_item_basic final : public register_map_item
 	{
 	public:
 		register_map_item_basic() noexcept;
-		register_map_item_basic(std::size_t size) noexcept;
+		register_map_item_basic(std::uint32_t size) noexcept;
 		register_map_item_basic(const register_map_item_basic& map_item) noexcept;
 		register_map_item_basic(register_map_item_basic&& map_item) noexcept;
 		virtual ~register_map_item_basic() override = default;
@@ -62,16 +63,16 @@ namespace lowi
 		bool equal(const register_map_item_basic& map_item) const;
 
 	public:
-		virtual std::size_t size() const override;
+		virtual std::uint32_t size() const override;
 
 	private:
-		std::size_t size_;
+		std::uint32_t size_;
 	};
 
 	class register_map_item_register final : public register_map_item
 	{
 	public:
-		register_map_item_register(const register_type::ptr& register_type);
+		register_map_item_register(const std::shared_ptr<register_type>& register_type);
 		register_map_item_register(const register_map_item_register& map_item);
 		register_map_item_register(register_map_item_register&& map_item) noexcept;
 		virtual ~register_map_item_register() override = default;
@@ -87,16 +88,17 @@ namespace lowi
 		bool equal(const register_map_item_register& map_item);
 
 	public:
-		virtual std::size_t size() const override;
-		register_type::ptr register_type() const;
+		virtual std::uint32_t size() const override;
+		std::shared_ptr<register_type> register_type() const;
 
 	private:
-		register_type::ptr register_type_;
+		std::shared_ptr<lowi::register_type> register_type_;
 	};
 
 	class register_map final
 	{
 	public:
+		register_map(std::uint32_t size);
 		register_map(const std::vector<register_map_item::ptr>& map);
 		register_map(const register_map& map);
 		register_map(register_map&& map) noexcept;
@@ -110,13 +112,16 @@ namespace lowi
 		register_map& operator=(register_map&& map) noexcept;
 		bool operator==(const register_map& map) const;
 		bool operator!=(const register_map& map) const;
-		register_map_item::ptr operator[](std::size_t offset);
+		register_map_item::ptr operator[](std::uint32_t offset);
 
 	public:
 		register_map& assign(const register_map& map);
 		register_map& assign(register_map&& map) noexcept;
 		bool equal(const register_map& map) const;
-		register_map_item::ptr at(std::size_t offset);
+		register_map_item::ptr at(std::uint32_t offset);
+
+	public:
+		std::uint32_t size() const;
 
 	private:
 		std::vector<register_map_item::ptr> map_;

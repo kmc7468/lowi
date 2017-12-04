@@ -1,12 +1,16 @@
 #ifndef LOWI_HEADER_REGISTER_TYPE_HH
 #define LOWI_HEADER_REGISTER_TYPE_HH
 
+#include <lowi/register_map.hh>
+
 #include <cstdint>
 #include <memory>
 #include <string>
 
 namespace lowi
 {
+	class register_map;
+
 	class register_type
 	{
 	public:
@@ -39,7 +43,7 @@ namespace lowi
 
 	private:
 		std::string name_;
-		std::uint32_t size_;
+		register_map map_;
 	};
 }
 

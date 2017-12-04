@@ -1,5 +1,7 @@
 #include <lowi/register_map.hh>
 
+#include <lowi/register_type.hh>
+
 #include <utility>
 
 namespace lowi
@@ -32,7 +34,7 @@ namespace lowi
 	register_map_item_basic::register_map_item_basic() noexcept
 		: size_(0)
 	{}
-	register_map_item_basic::register_map_item_basic(std::size_t size) noexcept
+	register_map_item_basic::register_map_item_basic(std::uint32_t size) noexcept
 		: size_(size)
 	{}
 	register_map_item_basic::register_map_item_basic(const register_map_item_basic& map_item) noexcept
@@ -122,6 +124,10 @@ namespace lowi
 
 namespace lowi
 {
+	register_map::register_map(std::uint32_t size)
+	{
+		map_.push_back(std::make_shared<register_map_item_basic>(size));
+	}
 	register_map::register_map(const std::vector<register_map_item::ptr>& map)
 		: map_(map)
 	{}
@@ -148,7 +154,7 @@ namespace lowi
 	{
 		return !equal(map);
 	}
-	register_map_item::ptr register_map::operator[](std::size_t offset)
+	register_map_item::ptr register_map::operator[](std::uint32_t offset)
 	{
 		return at(offset);
 	}
@@ -180,7 +186,7 @@ namespace lowi
 
 		return true;
 	}
-	register_map_item::ptr register_map::at(std::size_t offset)
+	register_map_item::ptr register_map::at(std::uint32_t offset)
 	{
 		if (map_.size() == 0)
 			throw std::invalid_argument("This register_map instance is empty.");
@@ -203,6 +209,18 @@ namespace lowi
 		}
 
 		throw std::out_of_range("'offset' is out of range.");
+	}
+
+	std::uint32_t register_map::size() const
+	{
+		std::uint32_t sum = 0;
+
+		for (const register_map_item::ptr& map : map_)
+		{
+			sum += map->size();
+		}
+
+		return sum;
 	}
 
 	const register_map register_map::empty;
