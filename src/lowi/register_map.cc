@@ -77,7 +77,7 @@ namespace lowi
 
 namespace lowi
 {
-	register_map_item_register::register_map_item_register(const register_type::ptr& register_type)
+	register_map_item_register::register_map_item_register(const std::shared_ptr<lowi::register_type>& register_type)
 		: register_type_(register_type)
 	{}
 	register_map_item_register::register_map_item_register(const register_map_item_register& map_item)
