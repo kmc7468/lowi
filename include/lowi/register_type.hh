@@ -9,8 +9,6 @@
 
 namespace lowi
 {
-	class register_map;
-
 	class register_type
 	{
 	public:
@@ -24,6 +22,7 @@ namespace lowi
 
 	protected:
 		register_type(const std::string& name, std::uint32_t size);
+		register_type(const std::string& name, const register_map& map);
 
 	public:
 		register_type& operator=(const register_type& register_type) = delete;
@@ -38,8 +37,11 @@ namespace lowi
 		bool equal(const ptr& register_type) const;
 
 	public:
-		std::string name() const;
 		std::uint32_t size() const noexcept;
+
+	public:
+		std::string name() const;
+		register_map map() const;
 
 	private:
 		std::string name_;

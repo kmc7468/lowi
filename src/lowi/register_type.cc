@@ -5,6 +5,9 @@ namespace lowi
 	register_type::register_type(const std::string& name, std::uint32_t size)
 		: name_(name), map_(size)
 	{}
+	register_type::register_type(const std::string& name, const register_map& map)
+		: name_(name), map_(map)
+	{}
 
 	bool register_type::operator==(const register_type& register_type) const
 	{
@@ -32,12 +35,17 @@ namespace lowi
 		return equal(*register_type);
 	}
 
+	std::uint32_t register_type::size() const noexcept
+	{
+		return map_.size();
+	}
+
 	std::string register_type::name() const
 	{
 		return name_;
 	}
-	std::uint32_t register_type::size() const noexcept
+	register_map register_type::map() const
 	{
-		return map_.size();
+		return map_;
 	}
 }

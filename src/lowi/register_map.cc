@@ -52,6 +52,17 @@ namespace lowi
 	{
 		return !equal(map_item);
 	}
+	register_map_item_basic register_map_item_basic::operator+(const register_map_item_basic& map_item) const
+	{
+		return size_ + map_item.size_;
+	}
+	register_map register_map_item_basic::operator+(const register_map_item_register& map_item) const
+	{
+		register_map this_map = *this;
+		register_map other_map = map_item;
+
+		return this_map + other_map;
+	}
 
 	bool register_map_item_basic::equal(const register_map_item& map_item) const
 	{
@@ -95,6 +106,20 @@ namespace lowi
 	{
 		return !equal(map_item);
 	}
+	register_map register_map_item_register::operator+(const register_map_item_register& map_item) const
+	{
+		register_map this_map = *this;
+		register_map other_map = map_item;
+
+		return this_map + other_map;
+	}
+	register_map register_map_item_register::operator+(const register_map_item_basic& map_item) const
+	{
+		register_map this_map = *this;
+		register_map other_map = map_item;
+
+		return this_map + other_map;
+	}
 
 	bool register_map_item_register::equal(const register_map_item& map_item) const
 	{
@@ -128,6 +153,14 @@ namespace lowi
 	{
 		map_.push_back(std::make_shared<register_map_item_basic>(size));
 	}
+	register_map::register_map(const register_map_item_basic& item)
+	{
+		map_.push_back(std::make_shared<register_map_item_basic>(item));
+	}
+	register_map::register_map(const register_map_item_register& item)
+	{
+		map_.push_back(std::make_shared<register_map_item_register>(item));
+	}
 	register_map::register_map(const std::vector<register_map_item::ptr>& map)
 		: map_(map)
 	{}
@@ -157,6 +190,13 @@ namespace lowi
 	register_map_item::ptr register_map::operator[](std::uint32_t offset)
 	{
 		return at(offset);
+	}
+	register_map register_map::operator+(const register_map& map) const
+	{
+		register_map new_map = *this;
+		new_map.map_.insert(new_map.map_.end(), map.map_.begin(), map.map_.end());
+
+		return new_map;
 	}
 
 	register_map& register_map::assign(const register_map& map)
