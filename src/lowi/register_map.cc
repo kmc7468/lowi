@@ -63,6 +63,10 @@ namespace lowi
 
 		return this_map + other_map;
 	}
+	register_map_item_basic register_map_item_basic::operator+(std::uint32_t size) const
+	{
+		return size_ + size;
+	}
 
 	bool register_map_item_basic::equal(const register_map_item& map_item) const
 	{
@@ -83,6 +87,11 @@ namespace lowi
 	std::size_t register_map_item_basic::size() const
 	{
 		return size_;
+	}
+
+	register_map_item_basic operator+(std::uint32_t size, const register_map_item_basic& map_item)
+	{
+		return size + map_item.size_;
 	}
 }
 
@@ -120,6 +129,13 @@ namespace lowi
 
 		return this_map + other_map;
 	}
+	register_map register_map_item_register::operator+(std::uint32_t size) const
+	{
+		register_map this_map = *this;
+		register_map other_map = size;
+
+		return this_map + other_map;
+	}
 
 	bool register_map_item_register::equal(const register_map_item& map_item) const
 	{
@@ -144,6 +160,14 @@ namespace lowi
 	register_type::ptr register_map_item_register::register_type() const
 	{
 		return register_type_;
+	}
+
+	register_map operator+(std::uint32_t size, const register_map_item_register& map_item)
+	{
+		register_map this_map = size;
+		register_map other_map = map_item;
+
+		return this_map + other_map;
 	}
 }
 

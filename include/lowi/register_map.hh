@@ -46,6 +46,8 @@ namespace lowi
 
 	class register_map_item_basic final : public register_map_item
 	{
+		friend register_map_item_basic operator+(std::uint32_t size, const register_map_item_basic& map_item);
+
 	public:
 		register_map_item_basic() noexcept;
 		register_map_item_basic(std::uint32_t size) noexcept;
@@ -60,6 +62,7 @@ namespace lowi
 		bool operator!=(const register_map_item_basic& map_item) const noexcept;
 		register_map_item_basic operator+(const register_map_item_basic& map_item) const;
 		register_map operator+(const register_map_item_register& map_item) const;
+		register_map_item_basic operator+(std::uint32_t size) const;
 
 	public:
 		virtual bool equal(const register_map_item& map_item) const override;
@@ -72,8 +75,12 @@ namespace lowi
 		std::uint32_t size_;
 	};
 
+	register_map_item_basic operator+(std::uint32_t size, const register_map_item_basic& map_item);
+
 	class register_map_item_register final : public register_map_item
 	{
+		friend register_map operator+(std::uint32_t size, const register_map_item_register& map_item);
+
 	public:
 		register_map_item_register(const std::shared_ptr<register_type>& register_type);
 		register_map_item_register(const register_map_item_register& map_item);
@@ -87,6 +94,7 @@ namespace lowi
 		bool operator!=(const register_map_item_register& map_item) const;
 		register_map operator+(const register_map_item_register& map_item) const;
 		register_map operator+(const register_map_item_basic& map_item) const;
+		register_map operator+(std::uint32_t size) const;
 
 	public:
 		virtual bool equal(const register_map_item& map_item) const override;
@@ -99,6 +107,8 @@ namespace lowi
 	private:
 		std::shared_ptr<lowi::register_type> register_type_;
 	};
+
+	register_map operator+(std::uint32_t size, const register_map_item_register& map_item);
 
 	class register_map final
 	{

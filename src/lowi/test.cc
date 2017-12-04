@@ -8,8 +8,9 @@ class rbx : public lowi::register_type
 public:
 	rbx()
 		: register_type("rbx",
-			lowi::register_map_item_basic(8) +
-			lowi::register_map_item_register(std::make_shared<lowi::registers::rax>()))
+			8 +
+			lowi::register_map_item_register(std::make_shared<lowi::registers::rax>())
+			+ 8)
 	{}
 };
 
