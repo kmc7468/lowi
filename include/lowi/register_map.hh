@@ -1,13 +1,14 @@
 #ifndef LOWI_HEADER_REGISTER_MAP_HH
 #define LOWI_HEADER_REGISTER_MAP_HH
 
+#include <lowi/register_type.hh>
+
 #include <memory>
 #include <vector>
 
 namespace lowi
 {
 	class register_map_item_basic;
-	class register_map_item_other;
 	class register_map_item_register;
 
 	class register_map_item
@@ -15,7 +16,6 @@ namespace lowi
 	public:
 		using ptr = std::shared_ptr<register_map_item>;
 		using basic = register_map_item_basic;
-		using other = register_map_item_other;
 		using register_ = register_map_item_register;
 
 	public:
@@ -52,22 +52,46 @@ namespace lowi
 		virtual ~register_map_item_basic() override = default;
 	
 	public:
-		register_map_item_basic& operator=(const register_map_item_basic& map_item) noexcept;
-		register_map_item_basic& operator=(register_map_item_basic&& map_item) noexcept;
+		register_map_item_basic& operator=(const register_map_item_basic& map_item) = delete;
+		register_map_item_basic& operator=(register_map_item_basic&& map_item) noexcept = delete;
 		bool operator==(const register_map_item_basic& map_item) const noexcept;
 		bool operator!=(const register_map_item_basic& map_item) const noexcept;
 
 	public:
-		register_map_item_basic& assign(const register_map_item_basic& map_item) noexcept;
-		register_map_item_basic& assign(register_map_item_basic&& map_item) noexcept;
 		virtual bool equal(const register_map_item& map_item) const override;
-		bool equal(const register_map_item_basic& map_item) const noexcept;
+		bool equal(const register_map_item_basic& map_item) const;
 
 	public:
-		virtual std::size_t size() const noexcept override;
+		virtual std::size_t size() const override;
 
 	private:
 		std::size_t size_;
+	};
+
+	class register_map_item_register final : public register_map_item
+	{
+	public:
+		register_map_item_register(const register_type::ptr& register_type);
+		register_map_item_register(const register_map_item_register& map_item);
+		register_map_item_register(register_map_item_register&& map_item) noexcept;
+		virtual ~register_map_item_register() override = default;
+
+	public:
+		register_map_item_register& operator=(const register_map_item_register& map_item) = delete;
+		register_map_item_register& operator=(register_map_item_register&& map_item) noexcept = delete;
+		bool operator==(const register_map_item_register& map_item) const;
+		bool operator!=(const register_map_item_register& map_item) const;
+
+	public:
+		virtual bool equal(const register_map_item& map_item) const override;
+		bool equal(const register_map_item_register& map_item);
+
+	public:
+		virtual std::size_t size() const override;
+		register_type::ptr register_type() const;
+
+	private:
+		register_type::ptr register_type_;
 	};
 
 	class register_map final

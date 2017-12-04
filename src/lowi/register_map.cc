@@ -42,14 +42,6 @@ namespace lowi
 		: size_(std::move(map_item.size_))
 	{}
 
-	register_map_item_basic& register_map_item_basic::operator=(const register_map_item_basic& map_item) noexcept
-	{
-		return assign(map_item);
-	}
-	register_map_item_basic& register_map_item_basic::operator=(register_map_item_basic&& map_item) noexcept
-	{
-		return assign(std::move(map_item));
-	}
 	bool register_map_item_basic::operator==(const register_map_item_basic& map_item) const noexcept
 	{
 		return equal(map_item);
@@ -59,16 +51,6 @@ namespace lowi
 		return !equal(map_item);
 	}
 
-	register_map_item_basic& register_map_item_basic::assign(const register_map_item_basic& map_item) noexcept
-	{
-		size_ = map_item.size_;
-		return *this;
-	}
-	register_map_item_basic& register_map_item_basic::assign(register_map_item_basic&& map_item) noexcept
-	{
-		size_ = std::move(map_item.size_);
-		return *this;
-	}
 	bool register_map_item_basic::equal(const register_map_item& map_item) const
 	{
 		if (dynamic_cast<const register_map_item_basic*>(&map_item) == nullptr)
@@ -80,14 +62,61 @@ namespace lowi
 			return equal(dynamic_cast<const register_map_item_basic&>(map_item));
 		}
 	}
-	bool register_map_item_basic::equal(const register_map_item_basic& map_item) const noexcept
+	bool register_map_item_basic::equal(const register_map_item_basic& map_item) const
 	{
 		return size_ == map_item.size_;
 	}
 
-	std::size_t register_map_item_basic::size() const noexcept
+	std::size_t register_map_item_basic::size() const
 	{
 		return size_;
+	}
+}
+
+namespace lowi
+{
+	register_map_item_register::register_map_item_register(const register_type::ptr& register_type)
+		: register_type_(register_type)
+	{}
+	register_map_item_register::register_map_item_register(const register_map_item_register& map_item)
+		: register_type_(map_item.register_type_)
+	{}
+	register_map_item_register::register_map_item_register(register_map_item_register&& map_item) noexcept
+		: register_type_(std::move(map_item.register_type_))
+	{}
+
+	bool register_map_item_register::operator==(const register_map_item_register& map_item) const
+	{
+		return equal(map_item);
+	}
+	bool register_map_item_register::operator!=(const register_map_item_register& map_item) const
+	{
+		return !equal(map_item);
+	}
+
+	bool register_map_item_register::equal(const register_map_item& map_item) const
+	{
+		if (dynamic_cast<const register_map_item_register*>(&map_item) == nullptr)
+		{
+			return false;
+		}
+		else
+		{
+			return equal(dynamic_cast<const register_map_item_register&>(map_item));
+		}
+	}
+	bool register_map_item_register::equal(const register_map_item_register& map_item)
+	{
+		return register_type_->equal(*map_item.register_type_);
+	}
+
+	std::size_t register_map_item_register::size() const
+	{
+		return register_type_->size();
+	}
+	register_type::ptr register_map_item_register::register_type() const
+	{
+		return register_type_;
 	}
 }
 
