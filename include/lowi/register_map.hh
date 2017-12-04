@@ -28,6 +28,9 @@ namespace lowi
 	public:
 		virtual bool equal(const register_map_item& map_item) const = 0;
 		bool equal(const ptr& map_item) const;
+
+	public:
+		virtual std::size_t size() const = 0;
 	};
 
 	class register_map final
@@ -46,11 +49,13 @@ namespace lowi
 		register_map& operator=(register_map&& map) noexcept;
 		bool operator==(const register_map& map) const;
 		bool operator!=(const register_map& map) const;
+		register_map_item::ptr operator[](std::size_t offset);
 
 	public:
 		register_map& assign(const register_map& map);
 		register_map& assign(register_map&& map) noexcept;
 		bool equal(const register_map& map) const;
+		register_map_item::ptr at(std::size_t offset);
 
 	private:
 		std::vector<register_map_item::ptr> map_;
