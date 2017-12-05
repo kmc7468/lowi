@@ -25,6 +25,9 @@ namespace lowi
 			rax& assign(const rax& rax);
 			rax& assign(rax&& rax) noexcept;
 			bool equal(const rax& rax) const noexcept;
+
+		public:
+			static ptr create();
 		};
 	}
 }

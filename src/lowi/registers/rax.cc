@@ -29,5 +29,10 @@ namespace lowi
 		{
 			return true;
 		}
+
+		register_type::ptr rax::create()
+		{
+			return std::make_shared<rax>();
+		}
 	}
 }

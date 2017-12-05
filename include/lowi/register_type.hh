@@ -37,6 +37,13 @@ namespace lowi
 		bool equal(const ptr& register_type) const;
 
 	public:
+		template<typename Ty_>
+		static ptr create()
+		{
+			return Ty_::create();
+		}
+
+	public:
 		std::uint32_t size() const noexcept;
 
 	public:

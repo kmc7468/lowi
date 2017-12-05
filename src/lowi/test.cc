@@ -9,7 +9,7 @@ public:
 	rbx()
 		: register_type("rbx",
 			8 +
-			lowi::register_map_item_register(std::make_shared<lowi::registers::rax>())
+			lowi::registers::rax::create()
 			+ 8)
 	{}
 };
