@@ -147,6 +147,8 @@ namespace lowi
 	public:
 		static const register_map empty;
 	};
+
+	register_map operator+(const std::shared_ptr<register_type>& lhs, const std::shared_ptr<register_type>& rhs);
 }
 
 #endif

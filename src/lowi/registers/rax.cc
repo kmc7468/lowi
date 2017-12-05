@@ -1,11 +1,13 @@
 #include <lowi/registers/rax.hh>
 
+#include <lowi/registers/eax.hh>
+
 namespace lowi
 {
 	namespace registers
 	{
 		rax::rax()
-			: register_type("rax", 8)
+			: register_type("rax", 4 + eax::create())
 		{}
 
 		bool rax::operator==(const rax& rax) const noexcept

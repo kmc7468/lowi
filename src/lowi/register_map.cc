@@ -288,4 +288,12 @@ namespace lowi
 	}
 
 	const register_map register_map::empty;
+
+	register_map operator+(const std::shared_ptr<register_type>& lhs, const std::shared_ptr<register_type>& rhs)
+	{
+		register_map this_map = lhs;
+		register_map other_map = rhs;
+
+		return this_map + other_map;
+	}
 }

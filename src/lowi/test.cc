@@ -3,20 +3,19 @@
 #include <iostream>
 #include <string>
 
-class rbx : public lowi::register_type
-{
-public:
-	rbx()
-		: register_type("rbx",
-			8 +
-			lowi::registers::rax::create()
-			+ 8)
-	{}
-};
-
 int main()
 {
-	rbx rbx;
+	lowi::registers::rax rax;
+	lowi::registers::eax eax;
+	lowi::registers::ax ax;
+	lowi::registers::ah ah;
+	lowi::registers::al al;
+
+	std::cout << rax.size() << std::endl;
+	std::cout << eax.size() << std::endl;
+	std::cout << ax.size() << std::endl;
+	std::cout << ah.size() << std::endl;
+	std::cout << al.size() << std::endl;
 
 	return 0;
 }
