@@ -17,5 +17,8 @@ int main()
 	std::cout << ah.size() << std::endl;
 	std::cout << al.size() << std::endl;
 
+	rax.map().dump();
+	rax.map().dump(false);
+	
 	return 0;
 }

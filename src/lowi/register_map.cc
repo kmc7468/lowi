@@ -2,6 +2,8 @@
 
 #include <lowi/register_type.hh>
 
+#include <exception>
+#include <iostream>
 #include <utility>
 
 namespace lowi
@@ -26,6 +28,31 @@ namespace lowi
 	bool register_map_item::equal(const ptr& map_item) const
 	{
 		return equal(*map_item);
+	}
+
+	void register_map_item::dump() const
+	{
+		dump(std::cout);
+	}
+	void register_map_item::dump(bool dump_sub_registers) const
+	{
+		dump(std::cout, dump_sub_registers);
+	}
+	void register_map_item::dump(std::size_t depth) const
+	{
+		dump(std::cout, depth);
+	}
+	void register_map_item::dump(std::ostream& stream) const
+	{
+		dump(stream, true);
+	}
+	void register_map_item::dump(std::ostream& stream, bool dump_sub_registers) const
+	{
+		dump(stream, 0, dump_sub_registers);
+	}
+	void register_map_item::dump(std::ostream& stream, std::size_t depth) const
+	{
+		dump(stream, depth, true);
 	}
 }
 
@@ -87,6 +114,15 @@ namespace lowi
 	std::size_t register_map_item_basic::size() const
 	{
 		return size_;
+	}
+	void register_map_item_basic::dump(std::ostream& stream, std::size_t depth, bool) const
+	{
+		static auto prefix = [](std::size_t depth)
+		{
+			return std::string(depth * 4, ' ');
+		};
+
+		stream << prefix(depth) << "- " << size_ << " Bytes\n";
 	}
 
 	register_map_item_basic operator+(std::uint32_t size, const register_map_item_basic& map_item)
@@ -157,6 +193,28 @@ namespace lowi
 	{
 		return register_type_->size();
 	}
+	void register_map_item_register::dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const
+	{
+		static auto prefix = [](std::size_t depth)
+		{
+			return std::string(depth * 4, ' ');
+		};
+
+		stream << prefix(depth) << "- register '" << register_type_->name() <<
+			"' (" << register_type_->size() << " Bytes)";
+		++depth;
+
+		if (dump_sub_registers)
+		{
+			stream << ":\n";
+			register_type_->map().dump(stream, depth, dump_sub_registers);
+		}
+		else
+		{
+			stream << '\n';
+		}
+	}
+
 	register_type::ptr register_map_item_register::register_type() const
 	{
 		return register_type_;
@@ -285,6 +343,42 @@ namespace lowi
 		}
 
 		return sum;
+	}
+	void register_map::dump() const
+	{
+		dump(std::cout);
+	}
+	void register_map::dump(bool dump_sub_registers) const
+	{
+		dump(std::cout, dump_sub_registers);
+	}
+	void register_map::dump(std::size_t depth) const
+	{
+		dump(std::cout, depth);
+	}
+	void register_map::dump(std::ostream& stream) const
+	{
+		dump(stream, true);
+	}
+	void register_map::dump(std::ostream& stream, bool dump_sub_registers) const
+	{
+		dump(stream, 0, dump_sub_registers);
+	}
+	void register_map::dump(std::ostream& stream, std::size_t depth) const
+	{
+		dump(stream, depth, true);
+	}
+	void register_map::dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const
+	{
+		static auto prefix = [](std::size_t depth)
+		{
+			return std::string(depth * 4, ' ');
+		};
+
+		for (const register_map_item::ptr& map : map_)
+		{
+			map->dump(stream, depth, dump_sub_registers);
+		}
 	}
 
 	const register_map register_map::empty;

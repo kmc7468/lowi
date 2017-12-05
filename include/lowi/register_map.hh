@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <memory>
+#include <ostream>
 #include <vector>
 
 namespace lowi
@@ -42,6 +43,13 @@ namespace lowi
 
 	public:
 		virtual std::uint32_t size() const = 0;
+		void dump() const;
+		void dump(bool dump_sub_registers) const;
+		void dump(std::size_t depth) const;
+		void dump(std::ostream& stream) const;
+		void dump(std::ostream& stream, bool dump_sub_registers) const;
+		void dump(std::ostream& stream, std::size_t depth) const;
+		virtual void dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const = 0;
 	};
 
 	class register_map_item_basic final : public register_map_item
@@ -70,6 +78,7 @@ namespace lowi
 
 	public:
 		virtual std::uint32_t size() const override;
+		virtual void dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const override;
 
 	private:
 		std::uint32_t size_;
@@ -102,6 +111,9 @@ namespace lowi
 
 	public:
 		virtual std::uint32_t size() const override;
+		virtual void dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const override;
+
+	public:
 		std::shared_ptr<register_type> register_type() const;
 
 	private:
@@ -140,6 +152,13 @@ namespace lowi
 
 	public:
 		std::uint32_t size() const;
+		void dump() const;
+		void dump(bool dump_sub_registers) const;
+		void dump(std::size_t depth) const;
+		void dump(std::ostream& stream) const;
+		void dump(std::ostream& stream, bool dump_sub_registers) const;
+		void dump(std::ostream& stream, std::size_t depth) const;
+		void dump(std::ostream& stream, std::size_t depth, bool dump_sub_registers) const;
 
 	private:
 		std::vector<register_map_item::ptr> map_;
