@@ -1,26 +1,24 @@
 # lowi
-어셈블리어 문법 기반 스크립트 언어
+Assembly language grammar based scripting language<br>
+(There may be an error in translation. and It contains paraphrase.)
 
-## 번역본(Translation)
-- [English](https://github.com/kmc7468/lowi/blob/master/translation/english/README.md)
-
-## 특징
-- 실제 어셈블리어를 거의 수정 없이 사용할 수 있습니다.
-- 확장성이 높습니다. 직접 아키텍쳐를 정의할 수도 있습니다.
+## Feature
+- You can use the actual assembly language with little modification.
+- It's highly scalable. You can also define your own architecture.
 
 ## lowi-lite
-lowi에서 확장 관련 기능을 모두 제거해 lowi 표준 아키텍쳐에서 제공하는 기능만을 제공하는 lowi의 서브 버전입니다. lowi보다 빠르고 가볍습니다.<br>
-**아직 준비중입니다.**
+lowi-lite is lowi's subversion. It's removed extension feature from lowi. It's faster and lighter than lowi.<br>
+**It's still in preparation.**
 
 ## lowi-interpreter
-lowi 표준 아키텍쳐대로 코드를 입력하면 인터프리팅을 해 주는 프로그램입니다.<br>
-**아직 준비중입니다.**
+If you input code written by lowi standard architecture, it will interpret them.<br>
+**It's still in preparation.**
 
-## 문의사항
-문의사항이 있다면 kmc7468@naver.com으로 연락해 주시기 바랍니다.
+## Question
+If you have any questions, please contact kmc7468@naver.com. (Please write in Korean or English.)
 
-## 라이선스
-lowi와 lowi-lite, lowi-interpreter의 코드는 MIT 라이선스가 적용되어 있습니다.
+## License
+lowi, lowi-lite, and lowi-interpreter codes applied MIT License.
 ```
 MIT License
 
