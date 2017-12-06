@@ -111,7 +111,7 @@ namespace lowi
 		return size_ == map_item.size_;
 	}
 
-	std::size_t register_map_item_basic::size() const
+	std::uint32_t register_map_item_basic::size() const
 	{
 		return size_;
 	}
@@ -189,7 +189,7 @@ namespace lowi
 		return register_type_->equal(*map_item.register_type_);
 	}
 
-	std::size_t register_map_item_register::size() const
+	std::uint32_t register_map_item_register::size() const
 	{
 		return register_type_->size();
 	}
