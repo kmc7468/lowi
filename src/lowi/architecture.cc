@@ -1,5 +1,7 @@
 #include <lowi/architecture.hh>
 
+#include <algorithm>
+
 namespace lowi
 {
 	bool architecture::operator==(const architecture& architecture) const
@@ -27,6 +29,36 @@ namespace lowi
 	bool architecture::equal(const ptr& architecture) const
 	{
 		return equal(*architecture);
+	}
+
+	void architecture::add_register(const register_type::ptr& register_type)
+	{
+		if (!locked_)
+		{
+			if (std::find_if(registers_.begin(), registers_.end(), [&register_type](const register_type::ptr& other_register_type)
+			{
+				return register_type->equal(*other_register_type);
+			}) == registers_.end())
+			{
+				registers_.push_back(register_type);
+			}
+		}
+	}
+	void architecture::remove_register(const register_type::ptr& register_type)
+	{
+		if (!locked_)
+		{
+			std::vector<register_type::ptr>::iterator iter;
+			iter = std::find_if(registers_.begin(), registers_.end(), [&register_type](const register_type::ptr& other_register_type)
+			{
+				return register_type->equal(*other_register_type);
+			});
+
+			if (iter != registers_.end())
+			{
+				registers_.erase(iter);
+			}
+		}
 	}
 
 	std::string architecture::name() const
@@ -88,5 +120,13 @@ namespace lowi
 		{
 			return locked_;
 		}
+	}
+	std::vector<register_type::ptr> architecture::registers() const
+	{
+		return registers_;
+	}
+	const std::vector<register_type::ptr>& architecture::registers() noexcept
+	{
+		return registers_;
 	}
 }

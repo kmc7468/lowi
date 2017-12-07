@@ -1,9 +1,12 @@
 #ifndef LOWI_HEADER_ARCHITECTURE_HH
 #define LOWI_HEADER_ARCHITECTURE_HH
 
+#include <lowi/register_type.hh>
+
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace lowi
 {
@@ -31,6 +34,10 @@ namespace lowi
 		bool equal(const ptr& architecture) const;
 
 	public:
+		void add_register(const register_type::ptr& register_type);
+		void remove_register(const register_type::ptr& register_type);
+
+	public:
 		std::string name() const;
 		std::string name(const std::string& new_name);
 		std::string author() const;
@@ -39,12 +46,16 @@ namespace lowi
 		std::uint64_t id(std::uint64_t new_id) noexcept;
 		bool locked() const noexcept;
 		bool locked(bool lock) noexcept;
+		std::vector<register_type::ptr> registers() const;
+		const std::vector<register_type::ptr>& registers() noexcept;
 
 	private:
 		std::string name_;
 		std::string author_;
 		std::uint64_t id_;
 		bool locked_;
+
+		std::vector<register_type::ptr> registers_;
 	};
 }
 
