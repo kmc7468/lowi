@@ -40,6 +40,12 @@
 #include <lowi/registers/r14w.hh>
 #include <lowi/registers/r15w.hh>
 
+#include <lowi/registers/cs.hh>
+#include <lowi/registers/ds.hh>
+#include <lowi/registers/es.hh>
+#include <lowi/registers/fs.hh>
+#include <lowi/registers/gs.hh>
+
 // 4Byte
 #include <lowi/registers/eax.hh>
 #include <lowi/registers/ebx.hh>

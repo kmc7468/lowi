@@ -14,6 +14,11 @@
 #include <lowi/registers/r13w.hh>
 #include <lowi/registers/r14w.hh>
 #include <lowi/registers/r15w.hh>
+#include <lowi/registers/cs.hh>
+#include <lowi/registers/ds.hh>
+#include <lowi/registers/es.hh>
+#include <lowi/registers/fs.hh>
+#include <lowi/registers/gs.hh>
 
 #include <lowi/registers/ah.hh>
 #include <lowi/registers/al.hh>
@@ -575,6 +580,176 @@ namespace lowi
 		register_type::ptr r15w::create()
 		{
 			return std::make_shared<r15w>();
+		}
+	}
+
+	namespace registers
+	{
+		cs::cs()
+			: register_type("cs", register_category::segment_register, 2)
+		{}
+
+		bool cs::operator==(const cs& cs) const noexcept
+		{
+			return equal(cs);
+		}
+		bool cs::operator!=(const cs& cs) const noexcept
+		{
+			return !equal(cs);
+		}
+
+		cs& cs::assign(const cs&)
+		{
+			return *this;
+		}
+		cs& cs::assign(cs&&) noexcept
+		{
+			return *this;
+		}
+		bool cs::equal(const cs&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr cs::create()
+		{
+			return std::make_shared<cs>();
+		}
+	}
+
+	namespace registers
+	{
+		ds::ds()
+			: register_type("ds", register_category::segment_register, 2)
+		{}
+
+		bool ds::operator==(const ds& ds) const noexcept
+		{
+			return equal(ds);
+		}
+		bool ds::operator!=(const ds& ds) const noexcept
+		{
+			return !equal(ds);
+		}
+
+		ds& ds::assign(const ds&)
+		{
+			return *this;
+		}
+		ds& ds::assign(ds&&) noexcept
+		{
+			return *this;
+		}
+		bool ds::equal(const ds&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr ds::create()
+		{
+			return std::make_shared<ds>();
+		}
+	}
+
+	namespace registers
+	{
+		es::es()
+			: register_type("es", register_category::segment_register, 2)
+		{}
+
+		bool es::operator==(const es& es) const noexcept
+		{
+			return equal(es);
+		}
+		bool es::operator!=(const es& es) const noexcept
+		{
+			return !equal(es);
+		}
+
+		es& es::assign(const es&)
+		{
+			return *this;
+		}
+		es& es::assign(es&&) noexcept
+		{
+			return *this;
+		}
+		bool es::equal(const es&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr es::create()
+		{
+			return std::make_shared<es>();
+		}
+	}
+
+	namespace registers
+	{
+		fs::fs()
+			: register_type("fs", register_category::segment_register, 2)
+		{}
+
+		bool fs::operator==(const fs& fs) const noexcept
+		{
+			return equal(fs);
+		}
+		bool fs::operator!=(const fs& fs) const noexcept
+		{
+			return !equal(fs);
+		}
+
+		fs& fs::assign(const fs&)
+		{
+			return *this;
+		}
+		fs& fs::assign(fs&&) noexcept
+		{
+			return *this;
+		}
+		bool fs::equal(const fs&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr fs::create()
+		{
+			return std::make_shared<fs>();
+		}
+	}
+
+	namespace registers
+	{
+		gs::gs()
+			: register_type("gs", register_category::segment_register, 2)
+		{}
+
+		bool gs::operator==(const gs& gs) const noexcept
+		{
+			return equal(gs);
+		}
+		bool gs::operator!=(const gs& gs) const noexcept
+		{
+			return !equal(gs);
+		}
+
+		gs& gs::assign(const gs&)
+		{
+			return *this;
+		}
+		gs& gs::assign(gs&&) noexcept
+		{
+			return *this;
+		}
+		bool gs::equal(const gs&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr gs::create()
+		{
+			return std::make_shared<gs>();
 		}
 	}
 }
