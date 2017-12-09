@@ -37,7 +37,7 @@ namespace lowi
 	namespace registers
 	{
 		eax::eax()
-			: register_type("eax", 2 + ax::create())
+			: register_type("eax", register_category::general_register, 2 + ax::create())
 		{}
 
 		bool eax::operator==(const eax& eax) const noexcept
@@ -71,7 +71,7 @@ namespace lowi
 	namespace registers
 	{
 		ebx::ebx()
-			: register_type("ebx", 2 + bx::create())
+			: register_type("ebx", register_category::general_register, 2 + bx::create())
 		{}
 
 		bool ebx::operator==(const ebx& ebx) const noexcept
@@ -105,7 +105,7 @@ namespace lowi
 	namespace registers
 	{
 		ecx::ecx()
-			: register_type("ecx", 2 + cx::create())
+			: register_type("ecx", register_category::general_register, 2 + cx::create())
 		{}
 
 		bool ecx::operator==(const ecx& ecx) const noexcept
@@ -139,7 +139,7 @@ namespace lowi
 	namespace registers
 	{
 		edx::edx()
-			: register_type("edx", 2 + dx::create())
+			: register_type("edx", register_category::general_register, 2 + dx::create())
 		{}
 
 		bool edx::operator==(const edx& edx) const noexcept
@@ -173,7 +173,7 @@ namespace lowi
 	namespace registers
 	{
 		ebp::ebp()
-			: register_type("ebp", 2 + bp::create())
+			: register_type("ebp", register_category::general_register, 2 + bp::create())
 		{}
 
 		bool ebp::operator==(const ebp& ebp) const noexcept
@@ -207,7 +207,7 @@ namespace lowi
 	namespace registers
 	{
 		esp::esp()
-			: register_type("esp", 2 + sp::create())
+			: register_type("esp", register_category::general_register, 2 + sp::create())
 		{}
 
 		bool esp::operator==(const esp& esp) const noexcept
@@ -241,7 +241,7 @@ namespace lowi
 	namespace registers
 	{
 		esi::esi()
-			: register_type("esi", 2 + si::create())
+			: register_type("esi", register_category::general_register, 2 + si::create())
 		{}
 
 		bool esi::operator==(const esi& esi) const noexcept
@@ -275,7 +275,7 @@ namespace lowi
 	namespace registers
 	{
 		edi::edi()
-			: register_type("edi", 2 + di::create())
+			: register_type("edi", register_category::general_register, 2 + di::create())
 		{}
 
 		bool edi::operator==(const edi& edi) const noexcept
@@ -309,7 +309,7 @@ namespace lowi
 	namespace registers
 	{
 		r8d::r8d()
-			: register_type("r8d", 2 + r8w::create())
+			: register_type("r8d", register_category::general_register, 2 + r8w::create())
 		{}
 
 		bool r8d::operator==(const r8d& r8d) const noexcept
@@ -343,7 +343,7 @@ namespace lowi
 	namespace registers
 	{
 		r9d::r9d()
-			: register_type("r9d", 2 + r9w::create())
+			: register_type("r9d", register_category::general_register, 2 + r9w::create())
 		{}
 
 		bool r9d::operator==(const r9d& r9d) const noexcept
@@ -377,7 +377,7 @@ namespace lowi
 	namespace registers
 	{
 		r10d::r10d()
-			: register_type("r10d", 2 + r10w::create())
+			: register_type("r10d", register_category::general_register, 2 + r10w::create())
 		{}
 
 		bool r10d::operator==(const r10d& r10d) const noexcept
@@ -411,7 +411,7 @@ namespace lowi
 	namespace registers
 	{
 		r11d::r11d()
-			: register_type("r11d", 2 + r11w::create())
+			: register_type("r11d", register_category::general_register, 2 + r11w::create())
 		{}
 
 		bool r11d::operator==(const r11d& r11d) const noexcept
@@ -445,7 +445,7 @@ namespace lowi
 	namespace registers
 	{
 		r12d::r12d()
-			: register_type("r12d", 2 + r12w::create())
+			: register_type("r12d", register_category::general_register, 2 + r12w::create())
 		{}
 
 		bool r12d::operator==(const r12d& r12d) const noexcept
@@ -479,7 +479,7 @@ namespace lowi
 	namespace registers
 	{
 		r13d::r13d()
-			: register_type("r13d", 2 + r13w::create())
+			: register_type("r13d", register_category::general_register, 2 + r13w::create())
 		{}
 
 		bool r13d::operator==(const r13d& r13d) const noexcept
@@ -513,7 +513,7 @@ namespace lowi
 	namespace registers
 	{
 		r14d::r14d()
-			: register_type("r14d", 2 + r14w::create())
+			: register_type("r14d", register_category::general_register, 2 + r14w::create())
 		{}
 
 		bool r14d::operator==(const r14d& r14d) const noexcept
@@ -547,7 +547,7 @@ namespace lowi
 	namespace registers
 	{
 		r15d::r15d()
-			: register_type("r15d", 2 + r15w::create())
+			: register_type("r15d", register_category::general_register, 2 + r15w::create())
 		{}
 
 		bool r15d::operator==(const r15d& r15d) const noexcept

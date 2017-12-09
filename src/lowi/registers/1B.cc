@@ -20,7 +20,7 @@ namespace lowi
 	namespace registers
 	{
 		ah::ah()
-			: register_type("ah", 1)
+			: register_type("ah", register_category::general_register, 1)
 		{}
 
 		bool ah::operator==(const ah& ah) const noexcept
@@ -54,7 +54,7 @@ namespace lowi
 	namespace registers
 	{
 		al::al()
-			: register_type("al", 1)
+			: register_type("al", register_category::general_register, 1)
 		{}
 
 		bool al::operator==(const al& al) const noexcept
@@ -88,7 +88,7 @@ namespace lowi
 	namespace registers
 	{
 		bh::bh()
-			: register_type("bh", 1)
+			: register_type("bh", register_category::general_register, 1)
 		{}
 
 		bool bh::operator==(const bh& bh) const noexcept
@@ -122,7 +122,7 @@ namespace lowi
 	namespace registers
 	{
 		bl::bl()
-			: register_type("bl", 1)
+			: register_type("bl", register_category::general_register, 1)
 		{}
 
 		bool bl::operator==(const bl& bl) const noexcept
@@ -156,7 +156,7 @@ namespace lowi
 	namespace registers
 	{
 		ch::ch()
-			: register_type("ch", 1)
+			: register_type("ch", register_category::general_register, 1)
 		{}
 
 		bool ch::operator==(const ch& ch) const noexcept
@@ -190,7 +190,7 @@ namespace lowi
 	namespace registers
 	{
 		cl::cl()
-			: register_type("cl", 1)
+			: register_type("cl", register_category::general_register, 1)
 		{}
 
 		bool cl::operator==(const cl& cl) const noexcept
@@ -224,7 +224,7 @@ namespace lowi
 	namespace registers
 	{
 		dh::dh()
-			: register_type("dh", 1)
+			: register_type("dh", register_category::general_register, 1)
 		{}
 
 		bool dh::operator==(const dh& dh) const noexcept
@@ -258,7 +258,7 @@ namespace lowi
 	namespace registers
 	{
 		dl::dl()
-			: register_type("dl", 1)
+			: register_type("dl", register_category::general_register, 1)
 		{}
 
 		bool dl::operator==(const dl& dl) const noexcept
@@ -292,7 +292,7 @@ namespace lowi
 	namespace registers
 	{
 		r8l::r8l()
-			: register_type("r8l", 1)
+			: register_type("r8l", register_category::general_register, 1)
 		{}
 
 		bool r8l::operator==(const r8l& r8l) const noexcept
@@ -326,7 +326,7 @@ namespace lowi
 	namespace registers
 	{
 		r9l::r9l()
-			: register_type("r9l", 1)
+			: register_type("r9l", register_category::general_register, 1)
 		{}
 
 		bool r9l::operator==(const r9l& r9l) const noexcept
@@ -360,7 +360,7 @@ namespace lowi
 	namespace registers
 	{
 		r10l::r10l()
-			: register_type("r10l", 1)
+			: register_type("r10l", register_category::general_register, 1)
 		{}
 
 		bool r10l::operator==(const r10l& r10l) const noexcept
@@ -394,7 +394,7 @@ namespace lowi
 	namespace registers
 	{
 		r11l::r11l()
-			: register_type("r11l", 1)
+			: register_type("r11l", register_category::general_register, 1)
 		{}
 
 		bool r11l::operator==(const r11l& r11l) const noexcept
@@ -428,7 +428,7 @@ namespace lowi
 	namespace registers
 	{
 		r12l::r12l()
-			: register_type("r12l", 1)
+			: register_type("r12l", register_category::general_register, 1)
 		{}
 
 		bool r12l::operator==(const r12l& r12l) const noexcept
@@ -462,7 +462,7 @@ namespace lowi
 	namespace registers
 	{
 		r13l::r13l()
-			: register_type("r13l", 1)
+			: register_type("r13l", register_category::general_register, 1)
 		{}
 
 		bool r13l::operator==(const r13l& r13l) const noexcept
@@ -496,7 +496,7 @@ namespace lowi
 	namespace registers
 	{
 		r14l::r14l()
-			: register_type("r14l", 1)
+			: register_type("r14l", register_category::general_register, 1)
 		{}
 
 		bool r14l::operator==(const r14l& r14l) const noexcept
@@ -530,7 +530,7 @@ namespace lowi
 	namespace registers
 	{
 		r15l::r15l()
-			: register_type("r15l", 1)
+			: register_type("r15l", register_category::general_register, 1)
 		{}
 
 		bool r15l::operator==(const r15l& r15l) const noexcept

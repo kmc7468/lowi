@@ -9,6 +9,16 @@
 
 namespace lowi
 {
+	enum class register_category
+	{
+		general_register,
+		segment_register,
+		flag_register,
+		control_register,
+		debug_register,
+		instruction_register,
+	};
+
 	class register_type
 	{
 	public:
@@ -21,8 +31,8 @@ namespace lowi
 		virtual ~register_type() = default;
 
 	protected:
-		register_type(const std::string& name, std::uint32_t size);
-		register_type(const std::string& name, const register_map& map);
+		register_type(const std::string& name, register_category category, std::uint32_t size);
+		register_type(const std::string& name, register_category category, const register_map& map);
 
 	public:
 		register_type& operator=(const register_type& register_type) = delete;
@@ -49,10 +59,12 @@ namespace lowi
 	public:
 		std::string name() const;
 		register_map map() const;
+		register_category category() const noexcept;
 
 	private:
 		std::string name_;
 		register_map map_;
+		register_category category_;
 	};
 }
 
