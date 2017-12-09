@@ -72,7 +72,7 @@ namespace lowi
 		std::string name_;
 		std::string author_;
 		std::uint64_t id_;
-		bool locked_;
+		bool locked_ = false;
 
 		std::vector<register_type::ptr> registers_;
 	};

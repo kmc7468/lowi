@@ -64,7 +64,14 @@ namespace lowi
 
 		register_type::ptr rax::create()
 		{
-			return std::make_shared<rax>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rax>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -98,7 +105,14 @@ namespace lowi
 
 		register_type::ptr rbx::create()
 		{
-			return std::make_shared<rbx>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rbx>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -132,7 +146,14 @@ namespace lowi
 
 		register_type::ptr rcx::create()
 		{
-			return std::make_shared<rcx>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rcx>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -166,7 +187,14 @@ namespace lowi
 
 		register_type::ptr rdx::create()
 		{
-			return std::make_shared<rdx>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rdx>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -200,7 +228,14 @@ namespace lowi
 
 		register_type::ptr rbp::create()
 		{
-			return std::make_shared<rbp>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rbp>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -234,7 +269,14 @@ namespace lowi
 
 		register_type::ptr rsp::create()
 		{
-			return std::make_shared<rsp>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rsp>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -268,7 +310,14 @@ namespace lowi
 
 		register_type::ptr rsi::create()
 		{
-			return std::make_shared<rsi>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rsi>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -302,7 +351,14 @@ namespace lowi
 
 		register_type::ptr rdi::create()
 		{
-			return std::make_shared<rdi>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rdi>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -336,7 +392,14 @@ namespace lowi
 
 		register_type::ptr r8::create()
 		{
-			return std::make_shared<r8>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r8>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -370,7 +433,14 @@ namespace lowi
 
 		register_type::ptr r9::create()
 		{
-			return std::make_shared<r9>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r9>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -404,7 +474,14 @@ namespace lowi
 
 		register_type::ptr r10::create()
 		{
-			return std::make_shared<r10>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r10>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -438,7 +515,14 @@ namespace lowi
 
 		register_type::ptr r11::create()
 		{
-			return std::make_shared<r11>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r11>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -472,7 +556,14 @@ namespace lowi
 
 		register_type::ptr r12::create()
 		{
-			return std::make_shared<r12>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r12>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -506,7 +597,14 @@ namespace lowi
 
 		register_type::ptr r13::create()
 		{
-			return std::make_shared<r13>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r13>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -540,7 +638,14 @@ namespace lowi
 
 		register_type::ptr r14::create()
 		{
-			return std::make_shared<r14>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r14>();
+			}
+
+			return instance;
 		}
 	}
 
@@ -574,7 +679,14 @@ namespace lowi
 
 		register_type::ptr r15::create()
 		{
-			return std::make_shared<r15>();
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<r15>();
+			}
+
+			return instance;
 		}
 	}
 }
