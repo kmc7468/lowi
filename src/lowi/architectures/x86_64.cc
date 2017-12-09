@@ -88,7 +88,14 @@ namespace lowi
 
 		architecture::ptr x86_64::create()
 		{
-			return std::make_shared<x86_64>();
+			static architecture::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<x86_64>();
+			}
+
+			return instance;
 		}
 	}
 }
