@@ -17,6 +17,7 @@ namespace lowi
 		control_register,
 		debug_register,
 		instruction_register,
+		table_register,
 	};
 
 	class register_type
