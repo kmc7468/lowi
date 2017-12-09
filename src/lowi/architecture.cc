@@ -4,6 +4,22 @@
 
 namespace lowi
 {
+	architecture::architecture(const std::string& name, const std::string& author, std::uint64_t id)
+		: name_(name), author_(author), id_(id)
+	{}
+	architecture::architecture(const std::string& name, const std::string& author, std::uint64_t id,
+		const std::vector<register_type::ptr>& registers)
+		: name_(name), author_(author), id_(id), registers_(registers)
+	{}
+	architecture::architecture(const std::string& name, const std::string& author, std::uint64_t id,
+		bool lock)
+		: name_(name), author_(author), id_(id), locked_(lock)
+	{}
+	architecture::architecture(const std::string& name, const std::string& author, std::uint64_t id,
+		const std::vector<register_type::ptr>& registers, bool lock)
+		: name_(name), author_(author), id_(id), locked_(lock), registers_(registers)
+	{}
+
 	bool architecture::operator==(const architecture& architecture) const
 	{
 		return equal(architecture);
@@ -126,6 +142,11 @@ namespace lowi
 		return registers_;
 	}
 	const std::vector<register_type::ptr>& architecture::registers() noexcept
+	{
+		return registers_;
+	}
+
+	std::vector<register_type::ptr>& architecture::protected_registers()
 	{
 		return registers_;
 	}

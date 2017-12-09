@@ -8,6 +8,7 @@
 #include <lowi/register_type.hh>
 #include <lowi/token.hh>
 
+#include <lowi/architectures.hh>
 #include <lowi/instructions.hh>
 #include <lowi/registers.hh>
 

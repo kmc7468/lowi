@@ -21,6 +21,15 @@ namespace lowi
 		architecture(architecture&& architecture) noexcept = delete;
 		virtual ~architecture() = default;
 
+	protected:
+		architecture(const std::string& name, const std::string& author, std::uint64_t id);
+		architecture(const std::string& name, const std::string& author, std::uint64_t id,
+			const std::vector<register_type::ptr>& registers);
+		architecture(const std::string& name, const std::string& author, std::uint64_t id,
+			bool lock);
+		architecture(const std::string& name, const std::string& author, std::uint64_t id,
+			const std::vector<register_type::ptr>& registers, bool lock);
+
 	public:
 		architecture& operator=(const architecture& architecture) = delete;
 		architecture& operator=(architecture&& architecture) noexcept = delete;
@@ -32,6 +41,13 @@ namespace lowi
 	public:
 		bool equal(const architecture& architecture) const;
 		bool equal(const ptr& architecture) const;
+
+	public:
+		template<typename Ty_>
+		static ptr create()
+		{
+			return std::make_shared<Ty_>();
+		}
 
 	public:
 		void add_register(const register_type::ptr& register_type);
@@ -48,6 +64,9 @@ namespace lowi
 		bool locked(bool lock) noexcept;
 		std::vector<register_type::ptr> registers() const;
 		const std::vector<register_type::ptr>& registers() noexcept;
+
+	protected:
+		std::vector<register_type::ptr>& protected_registers();
 
 	private:
 		std::string name_;
