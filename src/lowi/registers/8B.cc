@@ -14,6 +14,7 @@
 #include <lowi/registers/r13.hh>
 #include <lowi/registers/r14.hh>
 #include <lowi/registers/r15.hh>
+#include <lowi/registers/rflags.hh>
 
 #include <lowi/registers/eax.hh>
 #include <lowi/registers/ebx.hh>
@@ -31,6 +32,7 @@
 #include <lowi/registers/r13d.hh>
 #include <lowi/registers/r14d.hh>
 #include <lowi/registers/r15d.hh>
+#include <lowi/registers/eflags.hh>
 
 namespace lowi
 {
@@ -684,6 +686,47 @@ namespace lowi
 			if (instance == nullptr)
 			{
 				instance = std::make_shared<r15>();
+			}
+
+			return instance;
+		}
+	}
+
+	namespace registers
+	{
+		rflags::rflags()
+			: register_type("rflags", register_category::flag_register, 4 + eflags::create())
+		{}
+
+		bool rflags::operator==(const rflags& rflags) const noexcept
+		{
+			return equal(rflags);
+		}
+		bool rflags::operator!=(const rflags& rflags) const noexcept
+		{
+			return !equal(rflags);
+		}
+
+		rflags& rflags::assign(const rflags&)
+		{
+			return *this;
+		}
+		rflags& rflags::assign(rflags&&) noexcept
+		{
+			return *this;
+		}
+		bool rflags::equal(const rflags&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr rflags::create()
+		{
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<rflags>();
 			}
 
 			return instance;

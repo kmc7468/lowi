@@ -46,6 +46,8 @@
 #include <lowi/registers/fs.hh>
 #include <lowi/registers/gs.hh>
 
+#include <lowi/registers/flags.hh>
+
 // 4Byte
 #include <lowi/registers/eax.hh>
 #include <lowi/registers/ebx.hh>
@@ -66,6 +68,8 @@
 #include <lowi/registers/r14d.hh>
 #include <lowi/registers/r15d.hh>
 
+#include <lowi/registers/eflags.hh>
+
 // 8Byte
 #include <lowi/registers/rax.hh>
 #include <lowi/registers/rbx.hh>
@@ -85,5 +89,7 @@
 #include <lowi/registers/r13.hh>
 #include <lowi/registers/r14.hh>
 #include <lowi/registers/r15.hh>
+
+#include <lowi/registers/rflags.hh>
 
 #endif

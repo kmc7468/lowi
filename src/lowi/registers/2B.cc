@@ -19,6 +19,7 @@
 #include <lowi/registers/es.hh>
 #include <lowi/registers/fs.hh>
 #include <lowi/registers/gs.hh>
+#include <lowi/registers/flags.hh>
 
 #include <lowi/registers/ah.hh>
 #include <lowi/registers/al.hh>
@@ -894,6 +895,47 @@ namespace lowi
 			if (instance == nullptr)
 			{
 				instance = std::make_shared<gs>();
+			}
+
+			return instance;
+		}
+	}
+
+	namespace registers
+	{
+		flags::flags()
+			: register_type("flags", register_category::flag_register, 2)
+		{}
+
+		bool flags::operator==(const flags& flags) const noexcept
+		{
+			return equal(flags);
+		}
+		bool flags::operator!=(const flags& flags) const noexcept
+		{
+			return !equal(flags);
+		}
+
+		flags& flags::assign(const flags&)
+		{
+			return *this;
+		}
+		flags& flags::assign(flags&&) noexcept
+		{
+			return *this;
+		}
+		bool flags::equal(const flags&) const noexcept
+		{
+			return true;
+		}
+
+		register_type::ptr flags::create()
+		{
+			static register_type::ptr instance = nullptr;
+
+			if (instance == nullptr)
+			{
+				instance = std::make_shared<flags>();
 			}
 
 			return instance;

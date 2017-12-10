@@ -27,6 +27,7 @@ namespace lowi
 				registers::r13::create(),
 				registers::r14::create(),
 				registers::r15::create(),
+				registers::rflags::create(),
 
 				registers::eax::create(),
 				registers::ebx::create(),
@@ -44,6 +45,7 @@ namespace lowi
 				registers::r13d::create(),
 				registers::r14d::create(),
 				registers::r15d::create(),
+				registers::eflags::create(),
 
 				registers::ax::create(),
 				registers::bx::create(),
@@ -66,6 +68,7 @@ namespace lowi
 				registers::es::create(),
 				registers::fs::create(),
 				registers::gs::create(),
+				registers::flags::create(),
 
 				registers::ah::create(),
 				registers::al::create(),
