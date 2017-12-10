@@ -2,6 +2,40 @@
 
 namespace lowi
 {
+	register_additional_data::register_additional_data(register_category category)
+		: category_(category)
+	{}
+
+	bool register_additional_data::operator==(const register_additional_data& data) const
+	{
+		return equal(data);
+	}
+	bool register_additional_data::operator==(const ptr& data) const
+	{
+		return equal(data);
+	}
+	bool register_additional_data::operator!=(const register_additional_data& data) const
+	{
+		return !equal(data);
+	}
+	bool register_additional_data::operator!=(const ptr& data) const
+	{
+		return !equal(data);
+	}
+
+	bool register_additional_data::equal(const ptr& data) const
+	{
+		return equal(*data);
+	}
+
+	register_category register_additional_data::category() const noexcept
+	{
+		return category_;
+	}
+}
+
+namespace lowi
+{
 	register_type::register_type(const std::string& name, register_category category, std::uint32_t size)
 		: name_(name), map_(size), category_(category)
 	{}
