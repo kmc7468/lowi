@@ -27,6 +27,9 @@ namespace lowi
 			bool equal(const ds& ds) const noexcept;
 
 		public:
+			virtual register_additional_data::ptr additional_data() const override;
+
+		public:
 			static ptr create();
 		};
 	}

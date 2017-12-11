@@ -116,7 +116,7 @@ namespace lowi
 
 	public:
 		std::uint32_t size() const noexcept;
-		virtual register_additional_data::ptr additional_data() const = 0;
+		virtual register_additional_data::ptr additional_data() const;
 
 	public:
 		std::string name() const;

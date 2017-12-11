@@ -137,6 +137,10 @@ namespace lowi
 	{
 		return map_.size();
 	}
+	register_additional_data::ptr register_type::additional_data() const
+	{
+		return nullptr;
+	}
 
 	std::string register_type::name() const
 	{

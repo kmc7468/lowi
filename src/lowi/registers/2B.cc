@@ -724,6 +724,11 @@ namespace lowi
 			return true;
 		}
 
+		register_additional_data::ptr cs::additional_data() const
+		{
+			return std::make_shared<segment_register_additional_data>(false);
+		}
+
 		register_type::ptr cs::create()
 		{
 			static register_type::ptr instance = nullptr;
@@ -763,6 +768,11 @@ namespace lowi
 		bool ds::equal(const ds&) const noexcept
 		{
 			return true;
+		}
+
+		register_additional_data::ptr ds::additional_data() const
+		{
+			return std::make_shared<segment_register_additional_data>(true);
 		}
 
 		register_type::ptr ds::create()
@@ -806,6 +816,11 @@ namespace lowi
 			return true;
 		}
 
+		register_additional_data::ptr es::additional_data() const
+		{
+			return std::make_shared<segment_register_additional_data>(true);
+		}
+
 		register_type::ptr es::create()
 		{
 			static register_type::ptr instance = nullptr;
@@ -847,6 +862,11 @@ namespace lowi
 			return true;
 		}
 
+		register_additional_data::ptr fs::additional_data() const
+		{
+			return std::make_shared<segment_register_additional_data>(true);
+		}
+
 		register_type::ptr fs::create()
 		{
 			static register_type::ptr instance = nullptr;
@@ -886,6 +906,11 @@ namespace lowi
 		bool gs::equal(const gs&) const noexcept
 		{
 			return true;
+		}
+
+		register_additional_data::ptr gs::additional_data() const
+		{
+			return std::make_shared<segment_register_additional_data>(true);
 		}
 
 		register_type::ptr gs::create()
