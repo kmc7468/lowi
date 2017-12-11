@@ -32,7 +32,7 @@ namespace lowi
 		virtual ~register_additional_data() = default;
 
 	protected:
-		register_additional_data(register_category category);
+		register_additional_data(register_category category) noexcept;
 
 	public:
 		register_additional_data& operator=(const register_additional_data& data) = delete;
@@ -51,6 +51,33 @@ namespace lowi
 
 	private:
 		register_category category_;
+	};
+
+	class segment_register_additional_data final : public register_additional_data
+	{
+	public:
+		segment_register_additional_data(bool can_read_and_write_basically) noexcept;
+		segment_register_additional_data(const segment_register_additional_data& data) noexcept;
+		segment_register_additional_data(segment_register_additional_data&& data) noexcept;
+		virtual ~segment_register_additional_data() override = default;
+
+	public:
+		segment_register_additional_data& operator=(const segment_register_additional_data& data) noexcept;
+		segment_register_additional_data& operator=(segment_register_additional_data&& data) noexcept;
+		bool operator==(const segment_register_additional_data& data) const noexcept;
+		bool operator!=(const segment_register_additional_data& data) const noexcept;
+
+	public:
+		segment_register_additional_data& assign(const segment_register_additional_data& data) noexcept;
+		segment_register_additional_data& assign(segment_register_additional_data&& data) noexcept;
+		virtual bool equal(const register_additional_data& data) const override;
+		bool equal(const segment_register_additional_data& data) const noexcept;
+
+	public:
+		bool can_read_and_write_basically() const noexcept;
+
+	private:
+		bool can_read_and_write_basically_;
 	};
 
 	class register_type
@@ -89,6 +116,7 @@ namespace lowi
 
 	public:
 		std::uint32_t size() const noexcept;
+		virtual register_additional_data::ptr additional_data() const = 0;
 
 	public:
 		std::string name() const;
