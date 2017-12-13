@@ -6,6 +6,7 @@
 #include <lowi/instruction_type.hh>
 #include <lowi/operand.hh>
 #include <lowi/register_type.hh>
+#include <lowi/script.hh>
 #include <lowi/token.hh>
 
 #include <lowi/architectures.hh>
